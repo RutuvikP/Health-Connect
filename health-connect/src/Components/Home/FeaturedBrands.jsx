@@ -38,24 +38,61 @@ const featuredBrands=[
     }
 ]
 
-function FeaturedBrands(){
+import React, { Component } from "react";
+import Slider from "react-slick";
+
+export default class Responsive extends Component {
+  render() {
+    var settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
     return (
-        <div>
-            <Text fontSize={'20px'} mt={'20px'} ml={'5%'} align={'left'}>Featured Brands</Text>
-            <Box boxShadow={'rgba(0, 0, 0, 0.24) 0px 3px 8px;'} m={'auto'} p={'20px'} mt={'30px'}>
-            <SimpleGrid className="healthConcerns" m={'auto'} w={'90%'} columns={[1,3,4,7]} gap={5}>
-                {
+      <div>
+        <Text fontSize={'20px'} mt={'20px'} ml={'5%'} align={'left'}>Featured Brands</Text>
+        <Box boxShadow={'rgba(0, 0, 0, 0.24) 0px 3px 8px;'} m={'auto'} p={'25px'} mt={'30px'}>
+        <Slider {...settings}>
+        {
                     featuredBrands.map((el)=>(
-                        <Card key={el.id} p={'10px'}>
+                        <Card key={el.id} p={'10px'} m={'15px'}>
                             <Image m={'auto'} src={el.img} w={'120px'} h={'120px'}></Image>
                             <Text>{el.title}</Text>
                         </Card>
                     ))
                 }
-            </SimpleGrid>
-            </Box>
-        </div>
-    )
+        </Slider>
+        </Box>
+      </div>
+    );
+  }
 }
-
-export default FeaturedBrands;

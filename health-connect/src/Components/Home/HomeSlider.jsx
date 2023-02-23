@@ -37,6 +37,13 @@ export default function HomeSlider() {
     const cards = [
         {
             image:
+                'https://onemg.gumlet.io/a_ignore,w_1013,h_250,c_fit,q_auto,f_auto/714d5586-328e-4ca0-a4f7-8dd465ab308e.png',
+        },
+        {
+            image:'https://onemg.gumlet.io/e077f1ce-e5eb-46e6-aa3d-c22a86c77e79_1671079737.jpg?w=1013&h=250&format=auto'
+        },
+        {
+            image:
                 'https://onemg.gumlet.io/de5537c1-0e32-425a-ada2-f25a4003ab86_1673006267.jpg?w=1013&h=250&format=auto',
         },
         {
@@ -50,10 +57,6 @@ export default function HomeSlider() {
         {
             image:
                 'https://onemg.gumlet.io/a_ignore,w_1013,h_250,c_fit,q_auto,f_auto/290b5970-99ed-4022-b29e-095ad9b40199.png',
-        },
-        {
-            image:
-                'https://onemg.gumlet.io/a_ignore,w_1013,h_250,c_fit,q_auto,f_auto/04f86c00-b46d-436d-9e49-52ad2c0d12b4.png',
         },
         {
             image:'https://onemg.gumlet.io/a_ignore,w_1013,h_250,c_fit,q_auto,f_auto/49a3b635-a507-45a4-a54b-0b791e19e536.png'
