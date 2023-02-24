@@ -46,7 +46,7 @@ import {
             <IconButton
               onClick={onToggle}
               icon={
-                isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+                isOpen ? <CloseIcon color={'red'} w={3} h={3} /> : <HamburgerIcon color={'white'} w={5} h={5} />
               }
               variant={'ghost'}
               aria-label={'Toggle Navigation'}
@@ -258,7 +258,11 @@ import {
         {
           label: 'Multivitamins',
           href: '/vitamins',
-        } 
+        },
+        {
+          label: 'Ashwagandha',
+          href: '/ashwagandha',
+        }
       ],
     },
     {

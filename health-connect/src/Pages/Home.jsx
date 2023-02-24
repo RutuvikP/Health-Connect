@@ -1,7 +1,6 @@
 import { Box,Image} from "@chakra-ui/react";
 import Babycare from "../Components/Home/Babycare";
 import FeaturedBrands from "../Components/Home/FeaturedBrands";
-import Footer from "../Components/Footer";
 import HealthCareDevices from "../Components/Home/HealthCareDevices";
 import HealthConcerns from "../Components/Home/HealthConcerns";
 import HomeSlider from "../Components/Home/HomeSlider";
@@ -27,8 +26,6 @@ function Home(){
             <HealthCareDevices/>
             {/* baby care here */}
             <Babycare/>
-            {/* Footer */}
-            <Footer/>
         </Box>
     )
 }
