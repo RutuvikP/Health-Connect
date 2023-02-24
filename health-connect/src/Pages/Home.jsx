@@ -1,11 +1,11 @@
 import { Box,Image} from "@chakra-ui/react";
-import Babycare from "../Components/Babycare";
-import FeaturedBrands from "../Components/FeaturedBrands";
+import Babycare from "../Components/Home/Babycare";
+import FeaturedBrands from "../Components/Home/FeaturedBrands";
 import Footer from "../Components/Footer";
-import HealthCareDevices from "../Components/HealthCareDevices";
-import HealthConcerns from "../Components/HealthConcerns";
-import HomeSlider from "../Components/HomeSlider";
-import PopularCategories from "../Components/PopularCategories";
+import HealthCareDevices from "../Components/Home/HealthCareDevices";
+import HealthConcerns from "../Components/Home/HealthConcerns";
+import HomeSlider from "../Components/Home/HomeSlider";
+import PopularCategories from "../Components/Home/PopularCategories";
 
 
 
