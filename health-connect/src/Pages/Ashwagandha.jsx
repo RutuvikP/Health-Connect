@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import { SearchIcon, StarIcon } from '@chakra-ui/icons'
-import { Badge, Box, Button, Card, CardFooter, Center, HStack, Image, Input, InputGroup, InputLeftElement,  Select, SimpleGrid, Spinner, Text, VStack } from "@chakra-ui/react";
+import { Badge, Box, Button, Card, CardFooter, Center, HStack, Image, Input, InputGroup, InputLeftElement,  Select, SimpleGrid, Spinner, Text, VStack, useToast } from "@chakra-ui/react";
 import { useSearchParams, Link } from "react-router-dom";
 
 function getCurrentPage(val){
@@ -24,6 +24,8 @@ function Ashwagandha() {
     const [inputval, setInputval] = useState("")
     const [page, setPage] = useState(getCurrentPage(searchParam.get("page") || 1))
     const [order, setOrder] = useState("")
+    const [cartData, setCartData] = useState(JSON.parse(localStorage.getItem('cartData')) || []);
+    const toast= useToast()
     let totalpage = 3;
     let limit=15;
     const sortBy="price"
@@ -38,6 +40,29 @@ function Ashwagandha() {
     }
     else{
         apiUrl=`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/ashwagandha?p=${page}&l=${limit}`
+    }
+
+    const addToCart=(product)=>{
+        const productInCart = cartData.find(item => item.id === product.id)
+        if(productInCart){
+            toast({
+                      title: `Product is already in cart`,
+                      status: 'info',
+                      position:'top',
+                      duration: 2000,
+                      isClosable: true,
+                    })
+        }else{
+            setCartData([...cartData,{...product, quantity:1}]);
+            localStorage.setItem('cartData', JSON.stringify([...cartData,{...product, quantity:1}]))
+            toast({
+                title: `Product Added To Cart`,
+                status: 'success',
+                position:'top',
+                duration: 2000,
+                isClosable: true,
+              })
+        }
     }
 
     useEffect(() => {
@@ -110,7 +135,7 @@ function Ashwagandha() {
                                     </Link>
                                     <Center>
                                         <CardFooter>
-                                            <Button variant={'solid'} colorScheme={'teal'}>Add to Cart</Button>
+                                            <Button variant={'solid'} colorScheme={'teal'} onClick={()=>addToCart(el)}>Add to Cart</Button>
                                         </CardFooter>
                                     </Center>
                                 </Card>

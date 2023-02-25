@@ -51,7 +51,7 @@ function SingleAshwagandhaPage() {
                             <Spacer/>
                             <Badge fontSize={'18px'} colorScheme={'orange'}>Rs. {el.price}</Badge>
                             <Text fontWeight={'bold'}>Product Description :</Text>
-                            <Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus velit expedita necessitatibus sit consectetur explicabo nostrum accusamus beatae, minima officia nisi eius, nulla quisquam dolor, illo voluptates non nesciunt. Voluptatem?</Text>
+                            <Text>{el.description}</Text>
                             <Button colorScheme={'orange'} mt={'20px'}>Add to Cart</Button>
                         </Box>
                     </SimpleGrid>

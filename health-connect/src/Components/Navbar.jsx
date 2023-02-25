@@ -76,6 +76,15 @@ import {
               fontWeight={400}
               variant={'link'}
               color={'white'}
+              href={'/cart'}>
+              Cart
+            </Button>
+            <Button
+              as={'a'}
+              fontSize={'sm'}
+              fontWeight={400}
+              variant={'link'}
+              color={'white'}
               href={'#'}>
               Log In
             </Button>
