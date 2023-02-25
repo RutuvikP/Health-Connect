@@ -1,14 +1,16 @@
 import './App.css';
 import Navbar from './Components/Navbar';
-import Home from './Pages/Home';
-import Vitamins from './Pages/Vitamins';
 import AllRoutes from './Routes/AllRoutes';
+import Footer from './Components/Footer'
+import SingleVitaminsPage from './Pages/SingleVitaminsPage';
 
 function App() {
   return (
     <div className="App">
       <Navbar/>
       <AllRoutes/>
+      {/* <SingleVitaminsPage/> */}
+      <Footer/>
     </div>
   );
 }

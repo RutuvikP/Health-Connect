@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import { SearchIcon, StarIcon } from '@chakra-ui/icons'
-import { Badge, Box, Button, Card, CardFooter, Center, HStack, Image, Input, InputGroup, InputLeftElement, Select, SimpleGrid, Spinner, Text, VStack } from "@chakra-ui/react";
-import { Link, Navigate, useSearchParams } from "react-router-dom";
+import { Badge, Box, Button, Card, CardFooter, Center, HStack, Image, Input, InputGroup, InputLeftElement,  Select, SimpleGrid, Spinner, Text, VStack } from "@chakra-ui/react";
+import { useSearchParams, Link } from "react-router-dom";
 
 function getCurrentPage(val){
     let value=Number(val)
@@ -16,7 +16,7 @@ function getCurrentPage(val){
 }
 
 
-function Vitamins() {
+function Ashwagandha() {
 
     const [data, setData] = useState([])
     const [searchParam, setSearchParam] = useSearchParams();
@@ -31,13 +31,13 @@ function Vitamins() {
     let apiUrl;
 
     if(order && inputval){
-        apiUrl=`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/multivitamins?search=${inputval}&sortBy=${sortBy}&order=${order}`
+        apiUrl=`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/ashwagandha?search=${inputval}&sortBy=${sortBy}&order=${order}`
     }
     else if(order){
-        apiUrl=`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/multivitamins?p=${page}&l=${limit}&sortBy=${sortBy}&order=${order}`
+        apiUrl=`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/ashwagandha?p=${page}&l=${limit}&sortBy=${sortBy}&order=${order}`
     }
     else{
-        apiUrl=`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/multivitamins?p=${page}&l=${limit}`
+        apiUrl=`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/ashwagandha?p=${page}&l=${limit}`
     }
 
     useEffect(() => {
@@ -57,7 +57,7 @@ function Vitamins() {
 
     const handleInput = (e) => {
         setInputval(e.target.value)
-        axios.get(`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/multivitamins?search=${inputval}`)
+        axios.get(`https://63f5f2b99daf59d1ad7eab23.mockapi.io/healthconnect/ashwagandha?search=${inputval}`)
             .then((res) => {
                 setData(res.data)
             })
@@ -93,7 +93,7 @@ function Vitamins() {
                         {
                             data.map((el) => (
                                 <Card p={'10px'} borderRadius={'15px'} key={el.id} boxShadow={'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;'}>
-                                    <Link to={`/vitamins/${el.id}`}>
+                                    <Link to={`/ashwagandha/${el.id}`}>
                                     <Center>
                                         <Image w={'120px'} h={'150px'} src={el.img} />
                                     </Center>
@@ -129,4 +129,4 @@ function Vitamins() {
     }
 }
 
-export default Vitamins;
+export default Ashwagandha;
