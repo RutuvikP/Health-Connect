@@ -15,6 +15,7 @@ import {
     useColorModeValue,
     useBreakpointValue,
     useDisclosure,
+    Badge,
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -23,9 +24,23 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
   import healthconnectlogo from '../healthconnectlogo.png'
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../Context/AuthContextProvider';
+import { CartContext } from '../Context/CartContextProvider';
   
   export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
+    const {isAuth,setIsAuth} = useContext(AuthContext)
+    // const [cartData,setCartData]=useState([])
+    const {cartCount}=useContext(CartContext)
+
+    // useEffect(()=>{
+    //   const cartItems=JSON.parse(localStorage.getItem('cartData')) || []
+    //   setCartData(cartItems)
+    // },[])
+
+    // 
+
   
     return (
       <Box mb={'10px'}>
@@ -72,35 +87,62 @@ import {
             spacing={6}>
             <Button
               as={'a'}
-              fontSize={'sm'}
-              fontWeight={400}
+              fontSize={'md'}
+              fontWeight={'bold'}
               variant={'link'}
               color={'white'}
               href={'/cart'}>
-              Cart
+              Cart 🛒 {cartCount!=0?<Badge fontWeight={'bold'} colorScheme={'orange'} borderRadius={'50%'}>{cartCount}</Badge>:null}
             </Button>
+            {isAuth?
+            (<Button
+              as={'a'}
+              fontSize={'md'}
+              fontWeight={'bold'}
+              variant={'link'}
+              color={'white'}
+              onClick={()=>setIsAuth(false)}
+              href={'#'}>
+              Log Out
+            </Button>) : (
             <Button
               as={'a'}
               fontSize={'sm'}
-              fontWeight={400}
+              fontWeight={'bold'}
               variant={'link'}
               color={'white'}
-              href={'#'}>
+              href={'/login'}>
               Log In
             </Button>
-            <Button
+            )
+             }
+             {!isAuth?
+            (<Button
               as={'a'}
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
-              fontWeight={600}
+              fontWeight={'bold'}
               color={'white'}
               bg={'teal'}
-              href={'#'}
+              href={'/signup'}
               _hover={{
                 bg: 'gray',
               }}>
               Sign Up
-            </Button>
+            </Button>) : (<Button
+              as={'a'}
+              display={{ base: 'inline-flex', md: 'inline-flex' }}
+              fontSize={'sm'}
+              fontWeight={'bold'}
+              color={'white'}
+              bg={'orange'}
+              href={'#'}
+              _hover={{
+                bg: 'orange.500',
+              }}>
+              Welcome
+            </Button>)
+            }
           </Stack>
         </Flex>
   

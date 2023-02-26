@@ -2,18 +2,9 @@
 import { StarIcon } from "@chakra-ui/icons";
 import { Badge, Box, Button, Center, ListItem, Spinner, Image, Text,  Spacer, SimpleGrid } from "@chakra-ui/react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-// let data = [
-//     {
-//         id: "1",
-//         title: "Tata 1mg Women's Multivitamin Veg Tablet with Zinc, Vitamin C, Calcium, Vitamin D and Iron, Support Immunity, Bones & Overall Health",
-//         rating: "4.4",
-//         price: "348",
-//         img: "https://onemg.gumlet.io/images/q_auto,f_auto,w_150,c_fit,h_150/qh1au45w8u7cfvf3lg3i/tata-1mg-women-s-multivitamin-veg-tablet-with-zinc-vitamin-c-calcium-vitamin-d-and-iron-support-immunity-bones-overall-health.jpg"
-//     }
-// ]
+import { CartContext } from "../Context/CartContextProvider";
 
 
 
@@ -21,6 +12,7 @@ function SingleVitaminsPage() {
 
     const [data,setData] = useState([]);
     const [loading, setLoading] = useState(false)
+    const {cartData,addToCart}=useContext(CartContext)
     let params=useParams();
     console.log(params)
 
@@ -62,7 +54,7 @@ function SingleVitaminsPage() {
                             <Badge fontSize={'18px'} colorScheme={'orange'}>Rs. {el.price}</Badge>
                             <Text fontWeight={'bold'}>Product Description :</Text>
                             <Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus velit expedita necessitatibus sit consectetur explicabo nostrum accusamus beatae, minima officia nisi eius, nulla quisquam dolor, illo voluptates non nesciunt. Voluptatem?</Text>
-                            <Button colorScheme={'orange'} mt={'20px'}>Add to Cart</Button>
+                            <Button colorScheme={'orange'} mt={'20px'} onClick={()=>addToCart(el)}>Add to Cart</Button>
                         </Box>
                     </SimpleGrid>
                 ))
